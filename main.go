@@ -16,6 +16,14 @@ type Config struct {
 	Queries  []string `json:"queries"`
 }
 
+type Listing struct {
+	Title    string  `json:"title"`
+	Link     string  `json:"link"`
+	Desc     string  `json:"desc"`
+	Datetime string  `json:"datetime"`
+	Distance float32 `json:"distance"`
+}
+
 // Default error handler
 func checkError(err error) {
 	if err != nil {
@@ -53,7 +61,7 @@ func main() {
 	case "sss":
 		// On every a element which has href attribute call callback
 
-		url := fmt.Sprintf("https://%v.craigslist.org/search/%v%v?postedToday=1", config.City, config.Area, config.Category)
+		url := fmt.Sprintf("https://%v.craigslist.org/search/%v%v?query=%v", config.City, config.Area, config.Category, config.Queries)
 
 		c.OnHTML("a[href]", func(e *colly.HTMLElement) {
 			link := e.Attr("href")
