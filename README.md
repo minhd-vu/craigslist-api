@@ -1,2 +1,2 @@
-# new-deals
-Retrieve New Non-Duplicate Craigslist Deals
+# craigslist-api
+Retrieve Craigslist Data
